@@ -22,6 +22,9 @@ const Home = (props) => {
   const [offset, setOffset] = useState(0)
 
   const [catchingPokemons, setCatchingPokemons] = useState(false)
+  const [searching, setSearching] = useState(false)
+
+  const [searchResult, setSearchResult] = useState(false)
 
   async function getPokemon(value = 0) {
     setCatchingPokemons(true)
@@ -72,27 +75,34 @@ const Home = (props) => {
       <TitleSection>
         <Title>Pokédex</Title>
         <SubTitle>
-          Search for Pokémon by name or using the National Pokedéx number
+          Search for Pokémon by name or using the National Pokedéx number{'\n'}
+          ex: blastoise or 6
         </SubTitle>
       </TitleSection>
 
       <SearchBar
-        pokemons={pokemons}
+        searchResult={searchResult}
+        setSearchResult={setSearchResult}
+        navigation={props.navigation}
       />
 
-      {pokemons.length > 0 ? (
-        <PokemonList
-          pokemons={pokemons}
-          navigation={props.navigation}
-          offSetHandler={offSetHandler}
-        />
-      ) : (
-        <CatchSection>
-          <ActivityIndicator color="#bdbd" size={60} />
-          <CatchText>
-            Catching Pokemons
-          </CatchText>
-        </CatchSection>
+      {!searchResult && (
+        <>
+          {pokemons.length > 0 ? (
+            <PokemonList
+              pokemons={pokemons}
+              navigation={props.navigation}
+              offSetHandler={offSetHandler}
+            />
+          ) : (
+              <CatchSection>
+                <ActivityIndicator color="#bdbd" size={60} />
+                <CatchText>
+                  Catching Pokemons
+                </CatchText>
+              </CatchSection>
+            )}
+        </>
       )}
     </Container>
   );

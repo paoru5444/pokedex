@@ -43,7 +43,7 @@ export const SubTitle = styled.Text`
 `;
 
 export const CatchSection = styled.View`
-  flex: 1;
+  flex: 1;  
   justify-content: center;
   align-items: center;
 `;
