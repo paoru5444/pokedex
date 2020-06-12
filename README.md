@@ -1,4 +1,4 @@
-## Tabela de Conteúdo
+## PokeSumário
 - [Sobre o Projeto](#sobre-o-projeto)
 - [Instalação](#instalação)
 - [Funcionamento](#funcionamento)
