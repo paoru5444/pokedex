@@ -24,6 +24,8 @@ import { RectButton } from 'react-native-gesture-handler'
 
 import { color, background, images } from '../../utils/resources'
 
+import { ProgressBar } from '@react-native-community/progress-bar-android';
+
 const Details = ({ route, navigation }) => {
 
   const [pokemon, setPokemon] = useState({})
@@ -77,9 +79,9 @@ const Details = ({ route, navigation }) => {
           </View>
 
           <BottomBackground>
-            <PokedexData>
+            <PokedexData style={{ color: background[pokemon.types[0].type.name] }}>
               Pokédex Data
-          </PokedexData>
+            </PokedexData>
 
             {pokemon && pokemon.stats && (
               <View style={{ width: '80%', alignSelf: 'center' }}>
@@ -91,6 +93,12 @@ const Details = ({ route, navigation }) => {
                   <PokedexText>
                     {pokemon.stats[0].base_stat}
                   </PokedexText>
+
+                  <ProgressBar
+                    styleAttr="Horizontal"
+                    indeterminate={false}
+                    progress={pokemon.stats[0].base_stat / 100}
+                  />
                 </PokedexRow>
 
                 <PokedexRow>
@@ -101,6 +109,12 @@ const Details = ({ route, navigation }) => {
                   <PokedexText>
                     {pokemon.stats[1].base_stat}
                   </PokedexText>
+
+                  <ProgressBar
+                    styleAttr="Horizontal"
+                    indeterminate={false}
+                    progress={pokemon.stats[1].base_stat / 100}
+                  />
                 </PokedexRow>
 
                 <PokedexRow>
@@ -111,16 +125,28 @@ const Details = ({ route, navigation }) => {
                   <PokedexText>
                     {pokemon.stats[2].base_stat}
                   </PokedexText>
+
+                  <ProgressBar
+                    styleAttr="Horizontal"
+                    indeterminate={false}
+                    progress={pokemon.stats[2].base_stat / 100}
+                  />
                 </PokedexRow>
 
                 <PokedexRow>
                   <PokedexItem>
                     Velocidade
-              </PokedexItem>
+                  </PokedexItem>
 
                   <PokedexText>
                     {pokemon.stats[4].base_stat}
                   </PokedexText>
+
+                  <ProgressBar
+                    styleAttr="Horizontal"
+                    indeterminate={false}
+                    progress={pokemon.stats[4].base_stat / 100}
+                  />
                 </PokedexRow>
 
                 <PokedexRow>

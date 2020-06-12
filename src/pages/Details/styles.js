@@ -119,6 +119,7 @@ export const PokedexItem = styled.Text`
   line-height: 14px;
   color: #17171B;
   margin-left: ${props => props.marginLeft || 0};
+  padding: 5px;
 `
 
 export const PokedexText = styled.Text`
@@ -129,6 +130,7 @@ export const PokedexText = styled.Text`
   color: #747476;
   margin: 5px;
   margin-left: ${props => props.marginLeft || 0};
+  padding: 5px;
 `
 
 export const PokedexRow = styled.View`

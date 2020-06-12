@@ -69,9 +69,9 @@ export const PokeTypeText = styled.Text`
 
 export const BallBackground = styled.Image`
   position: absolute;
-  width: 145px;
-  height: 145px;
-  right: 0;
+  width: 155px;
+  height: 155px;
+  right: -10px;
 `;
 
 export const DotsBackground = styled.Image`

@@ -46,7 +46,7 @@ const PokemonList = ({ pokemons, navigation, offSetHandler }) => {
         >
 
           <DotsBackground source={require('../../../assets/dots.png')} />
-          <BallBackground source={require('../../../assets/Pokeball2.png')} />
+          <BallBackground source={require('../../../assets/Pokeball3.png')} />
           <PokeImage source={{ uri: `https://pokeres.bastionbot.org/images/pokemon/${item.id}.png` }} />
 
           <PokeId>
