@@ -7,14 +7,13 @@
 
 ## Sobre o Projeto
  Enciclopédia virtual portátil de alta tecnologia que os treinadores Pokémon transportam para registrar todas as espécies diferentes de Pokémon
- 
- <img src="../master/src/assets/readme/lista1.jpeg" width="200" height="400" /> |
- <img src="../master/src/assets/readme/lista2.jpeg" width="200" height="400" /> |
- <img src="../master/src/assets/readme/detalhe1.jpeg" width="200" height="400" /> |
- <img src="../master/src/assets/readme/detalhe2.jpeg" width="200" height="400" /> |
- <img src="../master/src/assets/readme/detalhe3.jpeg" width="200" height="400" /> |
- <img src="../master/src/assets/readme/search1.jpeg" width="200" height="400" /> |
- <img src="../master/src/assets/readme/search2.jpeg" width="200" height="400" /> |
+| Home 1 | Home 2 | Detalhe 1 | Detalhe 2 
+| ------------ | ------------- | ------------- | ------------- | 
+| <img src="../master/src/assets/readme/lista1.jpeg" width="200" height="400" /> | <img src="../master/src/assets/readme/lista2.jpeg" width="200" height="400" /> | <img src="../master/src/assets/readme/detalhe1.jpeg" width="200" height="400" /> | <img src="../master/src/assets/readme/detalhe2.jpeg" width="200" height="400" /> |
+
+| Detalhe 3 | Pesquisa | Pesquisa - 404 |
+| ------------- | ------------- | ------------- | 
+| <img src="../master/src/assets/readme/detalhe3.jpeg" width="200" height="400" /> | <img src="../master/src/assets/readme/search1.jpeg" width="200" height="400" /> | <img src="../master/src/assets/readme/search2.jpeg" width="200" height="400" /> |
 
 ## Instalação
   1. Faça download ou clone o projeto (`git clone git@github.com:paoru5444/pokedex.git`)
