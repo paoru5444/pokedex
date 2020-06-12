@@ -3,7 +3,6 @@
 - [Instalação](#instalação)
 - [Funcionamento](#funcionamento)
 - [Ferramentas](#ferramentas)
-- [Próximas funcionalidades](#próximas-funcionalidades)
 
 
 ## Sobre o Projeto
@@ -25,6 +24,7 @@
      - Velocidade
      - Habilidades
    - Paginação dos Resultados
+   - Pesquisar pokemon pelo nome
 
  ## Ferramentas
   - React
@@ -35,7 +35,3 @@
   - React Navigation
   - Gesture Handler
   - Vector Icons
-
- ## Próximas funcionalidades
-  1. Pesquisar pokemon específico.
-  2. Filtrar por geração
