@@ -16,6 +16,8 @@ import {
 
 import { background, color, images } from '../../../utils/resources'
 
+import {pokeIdParser} from '../../../utils/pokeIdParser'
+
 const PokemonList = ({ pokemons, navigation, offSetHandler }) => {
 
   function goTo(value) {
@@ -50,14 +52,17 @@ const PokemonList = ({ pokemons, navigation, offSetHandler }) => {
           <PokeImage source={{ uri: `https://pokeres.bastionbot.org/images/pokemon/${item.id}.png` }} />
 
           <PokeId>
-            {item.id < 10 ? `#00${item.id}` : item.id > 10 && item.id < 100 ? `#0${item.id}` : `#${item.id}`}
+            {pokeIdParser(item.id)}
           </PokeId>
 
           <PokeName>{item.name}</PokeName>
 
           <View style={{ flexDirection: 'row' }}>
-            {item.types.map(type => (
-              <PokeType style={{ backgroundColor: color[type.type.name] }}>
+            {item.types.map((type, i) => (
+              <PokeType
+                key={Math.random() + i}
+                style={{ backgroundColor: color[type.type.name] }}
+              >
                 <PokeTypeIcon
                   source={images[type.type.name]}
                 />

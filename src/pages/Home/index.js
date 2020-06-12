@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { ActivityIndicator } from 'react-native'
+import { ActivityIndicator, View } from 'react-native'
 
 import {
   Container,
@@ -9,6 +9,8 @@ import {
   TitleSection,
   Title,
   SubTitle,
+  CatchSection,
+  CatchText,
 } from './styles';
 
 import PokemonList from './PokemonList'
@@ -22,7 +24,6 @@ const Home = (props) => {
   const [catchingPokemons, setCatchingPokemons] = useState(false)
 
   async function getPokemon(value = 0) {
-    console.log(value)
     setCatchingPokemons(true)
 
     if (catchingPokemons) return
@@ -37,12 +38,6 @@ const Home = (props) => {
           })
           return Promise.all(promisesArray);
         }).then((data) => {
-          // data.map(o => {
-          //   o.types.map(o => {
-          //     // o.type["image"] = `${require(str)}`
-          //     console.log(o)
-          //   })
-          // })
           setPokemons([...pokemons, ...data])
           setCatchingPokemons(false)
         })
@@ -59,12 +54,7 @@ const Home = (props) => {
   function offSetHandler() {
     if (catchingPokemons) return
 
-    if (offset === 140) {
-      setOffset(offset + 11)
-    } else {
-      setOffset(offset + 20)
-    }
-
+    setOffset(offset + 20)
     getPokemon(offset + 20)
   }
 
@@ -90,12 +80,19 @@ const Home = (props) => {
         pokemons={pokemons}
       />
 
-      {pokemons.length > 0 && (
+      {pokemons.length > 0 ? (
         <PokemonList
           pokemons={pokemons}
           navigation={props.navigation}
           offSetHandler={offSetHandler}
         />
+      ) : (
+        <CatchSection>
+          <ActivityIndicator color="#bdbd" size={60} />
+          <CatchText>
+            Catching Pokemons
+          </CatchText>
+        </CatchSection>
       )}
     </Container>
   );

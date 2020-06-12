@@ -26,6 +26,8 @@ import { color, background, images } from '../../utils/resources'
 
 import { ProgressBar } from '@react-native-community/progress-bar-android';
 
+import {pokeIdParser} from '../../utils/pokeIdParser'
+
 const Details = ({ route, navigation }) => {
 
   const [pokemon, setPokemon] = useState({})
@@ -55,15 +57,18 @@ const Details = ({ route, navigation }) => {
 
             <View>
               <PokeId>
-                {pokemon.id < 10 ? `#00${pokemon.id}` : pokemon.id > 10 && pokemon.id < 100 ? `#0${pokemon.id}` : `#${pokemon.id}`}
+                {pokeIdParser(pokemon.id)}
               </PokeId>
 
               <PokeName>{pokemon.name}</PokeName>
 
               {pokemon && pokemon.types && (
                 <View style={{ flexDirection: 'row' }}>
-                  {pokemon.types.map(type => (
-                    <PokeType style={{ backgroundColor: color[type.type.name] }}>
+                  {pokemon.types.map((type, i) => (
+                    <PokeType
+                      key={Math.random() + i}
+                      style={{ backgroundColor: color[type.type.name] }}
+                    >
                       <PokeTypeIcon
                         source={images[type.type.name]}
                       />

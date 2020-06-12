@@ -42,6 +42,11 @@ export const SubTitle = styled.Text`
   padding-top: 5%;
 `;
 
-export const ScrollSection = styled.ScrollView`
-  
+export const CatchSection = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CatchText = styled.Text`
 `;
