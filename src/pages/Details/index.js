@@ -13,14 +13,16 @@ import {
   PokeTypeIcon,
   PokeTypeText,
   BottomBackground,
-  PokeDescription,
   PokedexData,
   PokedexItem,
   PokedexText,
   PokedexRow,
+  DotsBackground,
 } from './styles';
 
 import { RectButton } from 'react-native-gesture-handler'
+
+import { color, background, images } from '../../utils/resources'
 
 const Details = ({ route, navigation }) => {
 
@@ -31,114 +33,116 @@ const Details = ({ route, navigation }) => {
   }, [])
 
   return (
-    <Container>
-      <Header>
-        <RectButton onPress={() => navigation.goBack()}>
-          <HeaderIcon name="arrow-left" size={30} />
-        </RectButton>
-      </Header>
+    <>
+      {pokemon && pokemon.types && (
+        <Container style={{ backgroundColor: background[pokemon.types[0].type.name] }}>
+          <Header>
+            <RectButton onPress={() => navigation.goBack()}>
+              <HeaderIcon name="arrow-left" size={30} color="#fff" />
+            </RectButton>
+          </Header>
 
-      <DetailTitle>
-        {pokemon.name}
-      </DetailTitle>
+          <DotsBackground source={require('../../assets/dots2.png')} />
 
-      <View style={{ alignSelf: 'center', flexDirection: 'row', width: '80%', marginTop: '10%', justifyContent: 'space-around' }}>
-        <PokeImage source={{ uri: `https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png` }} />
+          <DetailTitle>
+            {pokemon.name}
+          </DetailTitle>
 
-        <View>
-          <PokeId>
-            {pokemon.id < 100 ? `#00${pokemon.id}` : `#${pokemon.id}`}
-          </PokeId>
+          <View style={{ alignSelf: 'center', flexDirection: 'row', width: '80%', marginTop: '10%', justifyContent: 'space-around' }}>
+            <PokeImage source={{ uri: `https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png` }} />
 
-          <PokeName>{pokemon.name}</PokeName>
-          {console.log(pokemon.types)}
+            <View>
+              <PokeId>
+                {pokemon.id < 10 ? `#00${pokemon.id}` : pokemon.id > 10 && pokemon.id < 100 ? `#0${pokemon.id}` : `#${pokemon.id}`}
+              </PokeId>
 
-          {pokemon.types > 0 && (
-            <View style={{ flexDirection: 'row' }}>
-              {pokemon.types.map(type => (
-                <PokeType>
-                  <PokeTypeIcon
-                    source={require('../../assets/types/bug.png')}
-                  />
+              <PokeName>{pokemon.name}</PokeName>
 
-                  <PokeTypeText>
-                    {type.type.name}
-                  </PokeTypeText>
-                </PokeType>
-              ))}
+              {pokemon && pokemon.types && (
+                <View style={{ flexDirection: 'row' }}>
+                  {pokemon.types.map(type => (
+                    <PokeType style={{ backgroundColor: color[type.type.name] }}>
+                      <PokeTypeIcon
+                        source={images[type.type.name]}
+                      />
+
+                      <PokeTypeText>
+                        {type.type.name}
+                      </PokeTypeText>
+                    </PokeType>
+                  ))}
+                </View>
+              )}
             </View>
-          )}
-        </View>
-      </View>
+          </View>
 
-      <BottomBackground>
-        <PokeDescription>
-          Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger.
-        </PokeDescription>
+          <BottomBackground>
+            <PokedexData>
+              Pokédex Data
+          </PokedexData>
 
-        <PokedexData>
-          Pokédex Data
-        </PokedexData>
+            {pokemon && pokemon.stats && (
+              <View style={{ width: '80%', alignSelf: 'center' }}>
+                <PokedexRow>
+                  <PokedexItem>
+                    HP
+              </PokedexItem>
 
-        <View style={{ width: '80%', alignSelf: 'center' }}>
-          <PokedexRow>
-            <PokedexItem>
-              HP
-            </PokedexItem>
+                  <PokedexText>
+                    {pokemon.stats[0].base_stat}
+                  </PokedexText>
+                </PokedexRow>
 
-            <PokedexText>
-              100
-            </PokedexText>
-          </PokedexRow>
+                <PokedexRow>
+                  <PokedexItem>
+                    Ataque
+              </PokedexItem>
 
-          <PokedexRow>
-            <PokedexItem>
-              Ataque
-            </PokedexItem>
+                  <PokedexText>
+                    {pokemon.stats[1].base_stat}
+                  </PokedexText>
+                </PokedexRow>
 
-            <PokedexText>
-              {pokemon.height}
-            </PokedexText>
-          </PokedexRow>
+                <PokedexRow>
+                  <PokedexItem>
+                    Defesa
+              </PokedexItem>
 
-          <PokedexRow>
-            <PokedexItem>
-              Defesa
-            </PokedexItem>
+                  <PokedexText>
+                    {pokemon.stats[2].base_stat}
+                  </PokedexText>
+                </PokedexRow>
 
-            <PokedexText>
-              {pokemon.weight}
-            </PokedexText>
-          </PokedexRow>
+                <PokedexRow>
+                  <PokedexItem>
+                    Velocidade
+              </PokedexItem>
 
-          <PokedexRow>
-            <PokedexItem>
-              Velocidade
-            </PokedexItem>
+                  <PokedexText>
+                    {pokemon.stats[4].base_stat}
+                  </PokedexText>
+                </PokedexRow>
 
-            <PokedexText>
-              {pokemon.weight}
-            </PokedexText>
-          </PokedexRow>
+                <PokedexRow>
+                  <PokedexItem>
+                    Abilities
+                </PokedexItem>
 
-          <PokedexRow>
-            <PokedexItem>
-              Abilities
-            </PokedexItem>
-            {console.log(pokemon.abilities)}
+                  <PokedexItem>
+                    {pokemon.abilities.map((o, index) => (
+                      <PokedexText>
+                        {index + 1}. {o.ability.name} {'\n'}
+                      </PokedexText>
+                    ))}
+                  </PokedexItem>
+                </PokedexRow>
+              </View>
+            )}
+          </BottomBackground>
 
-            <PokedexItem>
-              {pokemon.abilities.map((abilitie, index) => (
-                <PokedexText>
-                  {index + 1}. {abilitie.ability.name}{'\n'}
-                </PokedexText>
-              ))}
-            </PokedexItem>
-          </PokedexRow>
-        </View>
-      </BottomBackground>
-
-    </Container>
+        </Container>
+      )}
+    </>
   );
 }
 

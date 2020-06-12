@@ -37,6 +37,12 @@ const Home = (props) => {
           })
           return Promise.all(promisesArray);
         }).then((data) => {
+          // data.map(o => {
+          //   o.types.map(o => {
+          //     // o.type["image"] = `${require(str)}`
+          //     console.log(o)
+          //   })
+          // })
           setPokemons([...pokemons, ...data])
           setCatchingPokemons(false)
         })
@@ -80,7 +86,9 @@ const Home = (props) => {
         </SubTitle>
       </TitleSection>
 
-      <SearchBar />
+      <SearchBar
+        pokemons={pokemons}
+      />
 
       {pokemons.length > 0 && (
         <PokemonList

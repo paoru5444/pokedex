@@ -41,7 +41,7 @@ export const PokeImage = styled.Image`
 `
 
 export const PokeType = styled.View`
-  width: 75px;
+  min-width: 75px;
   height: 30px;
   background: #9DA0AA;
   border-radius: 3px;

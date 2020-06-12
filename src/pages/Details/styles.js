@@ -37,6 +37,7 @@ export const DetailTitle = styled.Text`
   text-transform: uppercase;
   color: #eee;
   z-index: -1;
+  opacity: 0.2
 `;
 
 export const PokeImage = styled.Image`
@@ -64,7 +65,7 @@ export const PokeName = styled.Text`
 `;
 
 export const PokeType = styled.View`
-  width: 75px;
+  min-width: 75px;
   height: 30px;
   background: #9DA0AA;
   border-radius: 3px;
@@ -100,16 +101,6 @@ export const BottomBackground = styled.View`
   border-top-right-radius: 30px;
 `;
 
-export const PokeDescription = styled.Text`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 19px;
-  color: #747476;
-  width: 80%;
-  align-self: center;
-  margin-top: 10%;
-`
 export const PokedexData = styled.Text`
   font-style: normal;
   font-weight: bold;
@@ -127,6 +118,7 @@ export const PokedexItem = styled.Text`
   font-size: 12px;
   line-height: 14px;
   color: #17171B;
+  margin-left: ${props => props.marginLeft || 0};
 `
 
 export const PokedexText = styled.Text`
@@ -136,11 +128,22 @@ export const PokedexText = styled.Text`
   line-height: 19px;
   color: #747476;
   margin: 5px;
+  margin-left: ${props => props.marginLeft || 0};
 `
 
 export const PokedexRow = styled.View`
   flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
   margin-top: 10px;
 `
+
+export const DotsBackground = styled.Image`
+  position: absolute;
+  height: 85px;
+  width: 140px;
+  right: -10;
+  top: 25%;
+  resize-mode: contain;
+`;
 

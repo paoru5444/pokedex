@@ -7,6 +7,7 @@ import {
   Icon,
 } from './styles';
 
+
 const SearchBar = () => {
   return (
     <Bar>

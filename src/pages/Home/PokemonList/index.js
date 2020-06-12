@@ -14,6 +14,8 @@ import {
   DotsBackground,
 } from './styles'
 
+import { background, color, images } from '../../../utils/resources'
+
 const PokemonList = ({ pokemons, navigation, offSetHandler }) => {
 
   function goTo(value) {
@@ -37,23 +39,27 @@ const PokemonList = ({ pokemons, navigation, offSetHandler }) => {
       showsVerticalScrollIndicator={false}
       ListFooterComponent={renderFooter}
       renderItem={({ item, index }) => (
-        <Card key={Math.random() + index} onPress={() => goTo(item)}>
+        <Card
+          key={Math.random() + index}
+          onPress={() => goTo(item)}
+          style={{ backgroundColor: background[item.types[0].type.name] }}
+        >
 
           <DotsBackground source={require('../../../assets/dots.png')} />
           <BallBackground source={require('../../../assets/Pokeball2.png')} />
           <PokeImage source={{ uri: `https://pokeres.bastionbot.org/images/pokemon/${item.id}.png` }} />
 
           <PokeId>
-            {item.id < 100 ? `#0${item.id}` : `#${item.id}`}
+            {item.id < 10 ? `#00${item.id}` : item.id > 10 && item.id < 100 ? `#0${item.id}` : `#${item.id}`}
           </PokeId>
 
           <PokeName>{item.name}</PokeName>
 
           <View style={{ flexDirection: 'row' }}>
             {item.types.map(type => (
-              <PokeType>
+              <PokeType style={{ backgroundColor: color[type.type.name] }}>
                 <PokeTypeIcon
-                  source={require('../../../assets/types/bug.png')}
+                  source={images[type.type.name]}
                 />
 
                 <PokeTypeText>
